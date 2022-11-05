@@ -1,0 +1,26 @@
+@use "../../utils/utils" as *;
+
+.Navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  background: $accent;
+  align-items: center;
+
+  gap: 5%;
+  a {
+    padding: 1.5%;
+    color: $text;
+    text-decoration: none;
+    transition: all 0.2s linear;
+
+    &:hover {
+      color: $accent;
+      background-color: $text;
+    }
+  }
+  svg {
+    padding: 2%;
+    font-size: 1.8rem;
+  }
+}

@@ -1,0 +1,27 @@
+$background: #fff;
+$accent: #d3b99f;
+$text: #000;
+
+$mobilemin: 37em;
+
+@mixin respond-to($media) {
+  @if $media == desktop {
+    @media only screen and (min-width: $mobilemin) and (orientation: portrait),
+      (min-height: $mobilemin) and (orientation: landscape) {
+      @content;
+    }
+  } @else if $media == mobile {
+    @media only screen and (max-width: $mobilemin) and (orientation: portrait),
+      (max-height: $mobilemin) and (orientation: landscape) {
+      @content;
+    }
+  } @else if $media == landscape {
+    @media only screen and (orientation: landscape) {
+      @content;
+    }
+  } @else {
+    @media ($media) {
+      @content;
+    }
+  }
+}
