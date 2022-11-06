@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "esnext",
+        "strict": true,
+        "baseUrl": "./src",
+        "outDir": "build"
+    },
+    "exclude": [
+        "node_modules",
+        "build"
+    ],
+    "include": [
+        "src/**/*.ts"
+    ],
+    "files": [
+        "src/index.ts"
+    ]
+}
