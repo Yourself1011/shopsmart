@@ -1,6 +1,6 @@
 {
   "grid": [
-    [26,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0],
+    [0 ,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0],
     [0 ,1,2 ,1,0,1,3 ,1,0,1,4 ,1,0],
     [0 ,1,5 ,1,0,1,6 ,1,0,1,7 ,1,0],
     [0 ,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0],
@@ -14,5 +14,5 @@
     [0 ,1,23,1,0,1,24,1,0,1,25,1,0],
     [0 ,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0]
   ],
-  "items": ["nothing", "shelf", "carrots", "chicken", "broccoli", "beef", "celery", "pork", "beans", "lamb", "cauliflower", "fish", "tomato", "eggs", "bananas", "milk", "apples", "butter", "oranges", "margarine", "blueberries", "yogurt", "mangoes", "bacon", "avocado", "start"]
+  "items": ["nothing", "shelf", "carrots", "chicken", "broccoli", "beef", "celery", "pork", "beans", "lamb", "nectarines", "fish", "tomato", "eggs", "bananas", "milk", "apples", "butter", "oranges", "granola", "blueberries", "saffron", "mangoes", "bacon", "avocado", "umbrellas"]
 }
