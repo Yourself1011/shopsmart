@@ -14,8 +14,8 @@ const Navbar: FC<NavbarProps> = () => (
   <div className="Navbar" data-testid="Navbar">
     <BsShop />
     {pages.map((x) => (
-      <div>
-        <Link to={x.path}>{x.name}</Link>
+      <div key={x.name}>
+        <Link key={x.name} to={x.path}>{x.name}</Link>
       </div>
     ))}
   </div>
