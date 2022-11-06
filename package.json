@@ -1,7 +1,13 @@
 {
-  "name": "client",
+  "name": "shopsmart",
+  "description": "Saving you oodles of time while grocery shopping"
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yourself1011/shopsmart"
+  },
+  "license": "BSD-3-Clause",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
