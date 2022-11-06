@@ -25,7 +25,6 @@ const ListForm: FC<ListFormProps> = () => {
       data.list.split(", ").map((x: string) => x.toLowerCase())
     );
   });
-  const [orderState, changeOrder] = useState([0]);
   const adjacencyMatrix = useRef<any[]>(shop.grid.map((x) => x.slice()));
 
   useEffect(() => {
@@ -50,9 +49,14 @@ const ListForm: FC<ListFormProps> = () => {
         }
       }
     }
+    console.log(adjacencyMatrix);
   }, []);
 
   useEffect(() => {
+    if (!listContext?.list.length) {
+      return;
+    }
+
     const BFS = (dest: number[], src: number[]) => {
       let queue: number[][];
       let visited: boolean[][];
@@ -77,15 +81,29 @@ const ListForm: FC<ListFormProps> = () => {
         }
       }
 
-      visited[0][0] = true;
-      dist[0][0] = 0;
-      queue.push([0, 0]);
+      if (shop.grid[src[0]][src[1]] > 1) {
+        if (typeof adjacencyMatrix.current[src[0] + 1][src[1]] !== "number") {
+          src = [src[0] + 1, src[1]];
+        } else if (
+          typeof adjacencyMatrix.current[src[0] - 1][src[1]] !== "number"
+        ) {
+          src = [src[0] - 1, src[1]];
+        }
+      }
+
+      console.log(src);
+
+      visited[src[0]][src[1]] = true;
+      dist[src[0]][src[1]] = 0;
+      queue.push(src);
 
       while (queue.length !== 0) {
         v = queue.shift() ?? [];
 
-        if (typeof adjacencyMatrix.current[v[0]][v[1]] !== "number") {
-          for (let i of adjacencyMatrix.current[v[0]][v[1]]) {
+        let adj = adjacencyMatrix.current[v[0]][v[1]];
+        if (typeof adj !== "number") {
+          for (let i of adj) {
+            // if (i === undefined) console.log(i);
             if (!visited[i[0]][i[1]]) {
               visited[i[0]][i[1]] = true;
               dist[i[0]][i[1]] = dist[v[0]][v[1]] + 1;
@@ -93,43 +111,55 @@ const ListForm: FC<ListFormProps> = () => {
               queue.push([i[0], i[1]]);
 
               if (i[0] === dest[0] && i[1] === dest[1]) {
-                return { status: true, dist, pred };
+                return { status: true, dist, pred, path: pred[i[0]][i[1]], i };
               }
             }
           }
         }
       }
 
-      return { status: false, dist, pred };
+      return { status: false, dist, pred, path: undefined };
     };
 
     let coords = listContext?.list.map((x) =>
       twoDIndexOf(shop.items.indexOf(x), shop.grid)
     );
+    coords?.push([0, 0]);
 
     // console.log(BFS([8, 10], [0, 0]));
 
-    let order = [];
+    let order: any[][] = [];
     let output;
-    for (let dest of coords ?? []) {
-      output = BFS(dest ?? [0, 0], [0, 0]);
-      order.push({
-        dest,
-        dist: output.dist[dest[0]][dest[1]],
-        num: shop.grid[dest[0]][dest[1]],
-      });
+    for (let src in coords ?? []) {
+      order.push([]);
+      for (let dest in coords ?? []) {
+        order[src].push([]);
+        output = BFS(coords?.[dest] ?? [0, 0], coords?.[src] ?? [0, 0]);
+        if (output.i === undefined) console.log(output);
+
+        order[src][dest].push({
+          src: coords?.[src],
+          dest: coords?.[dest],
+          srcIndex: src,
+          destIndex: dest,
+          dist: output.dist[coords?.[dest][0] ?? 0][coords?.[dest][1] ?? 0],
+          num: shop.grid[coords?.[dest][0] ?? 0][coords?.[dest][1] ?? 0],
+          pred: output.pred,
+          path: output.path,
+          i: output.i,
+        });
+      }
     }
 
-    order.sort((a, b) => a.dist - b.dist);
-    changeOrder(order.map((x) => x.num));
-  }, [listContext, adjacencyMatrix]);
+    listContext?.changeOrder(order);
+  }, [listContext?.list]);
 
   return (
     <div className="ListForm" data-testid="ListForm">
-      <div>
+      {/* <div>
         Order:{" "}
-        {orderState[0] ? orderState.map((x) => `${x}, `) : "Nothing yet!"}
-      </div>
+        {listContext?.order[0] ? listContext?.order.map((x) => `${x}, `) : "Nothing yet!"}
+      </div> */}
       <form onSubmit={onSubmit}>
         <textarea
           {...register("list")}

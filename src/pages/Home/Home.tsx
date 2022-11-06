@@ -11,10 +11,13 @@ interface HomeProps {}
 
 const Home: FC<HomeProps> = () => {
   const [list, changeList] = useState([]);
+  const [order, changeOrder] = useState([]);
 
   const ctx: ListContextInterface = {
     list: list,
     changeList: changeList,
+    order,
+    changeOrder,
   };
 
   return (
