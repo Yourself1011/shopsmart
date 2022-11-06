@@ -53,6 +53,9 @@ const UserCanvas: FC<UserCanvasProps> = () => {
         }
       }
     }
+
+    ctx.fillStyle = "#2e2";
+    ctx.fillRect(0, 0, unit, unit);
   }, []);
 
   return (
