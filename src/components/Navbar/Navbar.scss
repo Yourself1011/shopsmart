@@ -5,20 +5,29 @@
   top: 0;
   display: flex;
   background: $accent;
-  align-items: center;
+  align-items: stretch;
 
   gap: 5%;
-  a {
-    padding: 1.5%;
-    color: $text;
-    text-decoration: none;
+  
+  div {
+    display: flex;
+    align-items: center;
     transition: all 0.2s linear;
+    padding: 0px 1.5%;
 
     &:hover {
-      color: $accent;
       background-color: $text;
+      a {
+        color: $accent;
+      }
+    }
+
+    a {
+      color: $text;
+      text-decoration: none;
     }
   }
+
   svg {
     padding: 2%;
     font-size: 1.8rem;
