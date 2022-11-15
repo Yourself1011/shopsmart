@@ -49,7 +49,7 @@ const UserCanvas: FC<UserCanvasProps> = () => {
 
           ctx.globalCompositeOperation = "source-over";
 
-          ctx.fillStyle = "#fff";
+          ctx.fillStyle = "#000";
 
           ctx.fillText(
             `${shop.grid[row][column]}: ${shop.items[shop.grid[row][column]]}`,
