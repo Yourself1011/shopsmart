@@ -23,8 +23,8 @@ const Home: FC<HomeProps> = () => {
   return (
     <div className="Home">
       <ListCtx.Provider value={ctx}>
-        <UserCanvas />
         <ListForm />
+        <UserCanvas />
       </ListCtx.Provider>
     </div>
   );
