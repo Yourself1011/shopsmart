@@ -1,7 +1,17 @@
+@use "../../utils/utils.scss" as *;
+
+h1 {
+  font-weight: normal;
+  text-align: center;
+}
+
 .ListForm {
   display: flex;
-  padding: 30px;
+  padding: 15px 30px 30px 30px;
   justify-content: center;
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 50px;
 
   form {
     gap: 30px;
@@ -10,21 +20,28 @@
   }
 
   textarea {
-    padding: 5px 10px;
+    box-shadow: 5px;
+    padding: 10px 20px;
     border-radius: 10px;
     resize: none;
-    min-height: 70px;
+    min-height: 80px;
     border: none;
-    background-color: #eee;
-
-    &:focus {
-      border:none;
-    }
+    background-color: #eef;
   }
 
   input {
     margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
+    background-color: $accent;
+    border: 0px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken($accent, 10%);
+    }
   }
 }

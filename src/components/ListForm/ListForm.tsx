@@ -155,6 +155,10 @@ const ListForm: FC<ListFormProps> = () => {
   }, [listContext?.list]);
 
   return (
+    <>
+    <h1>
+      Enter your shopping list
+    </h1>
     <div className="ListForm" data-testid="ListForm">
       {/* <div>
         Order:{" "}
@@ -169,6 +173,7 @@ const ListForm: FC<ListFormProps> = () => {
         <input type="submit" />
       </form>
     </div>
+    </>
   );
 };
 
