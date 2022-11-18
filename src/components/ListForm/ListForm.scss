@@ -6,11 +6,15 @@
   justify-content: center;
   font-size: 16px;
   margin: 0;
-  margin-bottom: 50px;
 
   form {
     gap: 30px;
     text-align: center;
+  }
+
+  #buttondiv {
+    display: flex;
+    gap: 20px;
   }
 
   textarea {
@@ -46,5 +50,23 @@
     textarea {
       min-width: 60vw;
     }
+  }
+}
+
+#clearformbutton {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: white;
+  border: 2px solid $accent;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+
+  &:hover {
+    background-color: #eef;
   }
 }
