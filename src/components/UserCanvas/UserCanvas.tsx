@@ -163,8 +163,10 @@ const UserCanvas: FC<UserCanvasProps> = () => {
 
   return (
     // <div className="UserCanvas" data-testid="UserCanvas">
-    <canvas ref={canvasRef} width="686" height="686" />
-    // </div>
+    <div>
+      <h1>Store Map</h1>
+      <canvas ref={canvasRef} width="686" height="686" />
+  // </div>
   );
 };
 

@@ -1,10 +1,5 @@
 @use "../../utils/utils.scss" as *;
 
-h1 {
-  font-weight: normal;
-  text-align: center;
-}
-
 .ListForm {
   display: flex;
   padding: 15px 30px 30px 30px;
@@ -15,7 +10,6 @@ h1 {
 
   form {
     gap: 30px;
-    height: 100px;
     text-align: center;
   }
 
@@ -24,7 +18,8 @@ h1 {
     padding: 10px 20px;
     border-radius: 10px;
     resize: none;
-    min-height: 80px;
+    min-height: 15vh;
+    min-width: 25vw;
     border: none;
     background-color: #eef;
   }
@@ -42,6 +37,14 @@ h1 {
 
     &:hover {
       background-color: darken($accent, 10%);
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .ListForm {
+    textarea {
+      min-width: 60vw;
     }
   }
 }

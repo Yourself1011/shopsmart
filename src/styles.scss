@@ -8,6 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: $background;
+  padding-bottom: 5vh;
 }
 
 * {
@@ -46,4 +47,22 @@ code {
   100% {
     transform: rotate(360deg);
   }
+}
+
+canvas {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 40vw;
+  border: 3px solid black;
+  padding: 1.25%;
+  border-radius: 15px;
+}
+
+h1 {
+  font-weight: normal;
+  text-align: center;
+  font-size: 2rem;
 }
