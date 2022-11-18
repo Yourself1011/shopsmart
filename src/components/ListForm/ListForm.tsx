@@ -21,6 +21,17 @@ const ListForm: FC<ListFormProps> = () => {
   const listContext = useContext(ListCtx);
   const { register, handleSubmit } = useForm();
   const onSubmit = handleSubmit((data) => {
+    if (!data.list || data.list=='') {
+      data.list = "nothing";
+    } else {
+      let splitList = data.list.split(", ");
+      for (let item in splitList) {
+        if (!shop.items.includes(splitList[item].toLowerCase())) {
+          alert('That\'s not an item in the shop!')
+          return;
+        }
+      }
+    }
     listContext?.changeList(
       data.list.split(", ").map((x: string) => x.toLowerCase())
     );
@@ -154,6 +165,8 @@ const ListForm: FC<ListFormProps> = () => {
     listContext?.changeOrder(order);
   }, [listContext?.list]);
 
+  console.log(shop.items)
+
   return (
     <>
     <h1>
@@ -168,11 +181,18 @@ const ListForm: FC<ListFormProps> = () => {
         <textarea
           {...register("list")}
           placeholder="Avocado, mangoes, oranges, nectarines, granola, umbrellas, saffron"
+          id='inputform'
         />
         <br />
         <input type="submit" />
       </form>
     </div>
+    <button id='clearformbutton' onClick = {
+      () => {
+        (document.getElementById("inputform") as HTMLInputElement).value = '';
+        return;
+      }
+    }>Clear Form</button>
     </>
   );
 };

@@ -1,22 +1,20 @@
 @use "../../utils/utils.scss" as *;
 
-h1 {
-  font-weight: normal;
-  text-align: center;
-}
-
 .ListForm {
   display: flex;
   padding: 15px 30px 30px 30px;
   justify-content: center;
   font-size: 16px;
   margin: 0;
-  margin-bottom: 50px;
 
   form {
     gap: 30px;
-    height: 100px;
     text-align: center;
+  }
+
+  #buttondiv {
+    display: flex;
+    gap: 20px;
   }
 
   textarea {
@@ -24,7 +22,8 @@ h1 {
     padding: 10px 20px;
     border-radius: 10px;
     resize: none;
-    min-height: 80px;
+    min-height: 15vh;
+    min-width: 25vw;
     border: none;
     background-color: #eef;
   }
@@ -43,5 +42,31 @@ h1 {
     &:hover {
       background-color: darken($accent, 10%);
     }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .ListForm {
+    textarea {
+      min-width: 60vw;
+    }
+  }
+}
+
+#clearformbutton {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: white;
+  border: 2px solid $accent;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+
+  &:hover {
+    background-color: #eef;
   }
 }
