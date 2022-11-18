@@ -64,5 +64,11 @@ canvas {
 h1 {
   font-weight: normal;
   text-align: center;
-  font-size: 2rem;
+  font-size: max(2vw, 20px);
+}
+
+@media screen and (max-width: 800px) {
+  canvas {
+    width: 75vw;
+  }
 }
